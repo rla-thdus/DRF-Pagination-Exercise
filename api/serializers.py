@@ -10,7 +10,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'username', 'email', 'is_staff']
 
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
