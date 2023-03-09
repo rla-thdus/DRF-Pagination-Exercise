@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
+from rest_framework.decorators import action
 from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 
@@ -32,7 +33,7 @@ class PostLikeAPIView(UpdateAPIView):
         if getattr(instance, '_prefetched_objects_cache', None):
             instance._prefetched_objects_cache = {}
 
-        return Response(serializer.data)
+        return Response(serializer.data['like'])
 
 
 class TagViewSet(viewsets.ModelViewSet):
