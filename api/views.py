@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 
-from api.models import Post, Tag, Category
-from api.serializers import UserSerializer, PostSerializer, TagSerializer, CategorySerializer
+from api.models import Post, Tag, Category, Comment
+from api.serializers import UserSerializer, PostSerializer, TagSerializer, CategorySerializer, CommentSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,4 +23,10 @@ class TagViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
 
