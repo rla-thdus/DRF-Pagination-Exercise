@@ -12,6 +12,7 @@ router.register(r'categories', CategoryViewSet)
 router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
+    path('posts/', views.PostListAPIView.as_view(), name='post-list'),
     path('posts/<int:pk>/like', views.PostLikeAPIView.as_view(), name='post-detail'),
     path('', include(router.urls)),
 ]

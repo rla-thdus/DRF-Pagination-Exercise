@@ -16,6 +16,14 @@ class PostSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class PostListSerializer(serializers.ModelSerializer):
+    category = serializers.CharField(source='category.name')
+
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'image', 'like', 'category']
+
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag

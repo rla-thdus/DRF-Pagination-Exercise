@@ -1,10 +1,13 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
-from rest_framework.generics import GenericAPIView
+from rest_framework.decorators import action
+from rest_framework.generics import GenericAPIView, ListAPIView
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 from api.models import Post, Tag, Category, Comment
-from api.serializers import UserSerializer, PostSerializer, TagSerializer, CategorySerializer, CommentSerializer
+from api.serializers import UserSerializer, PostSerializer, TagSerializer, CategorySerializer, CommentSerializer, \
+    PostListSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -15,6 +18,16 @@ class UserViewSet(viewsets.ModelViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+
+class PostPageNumberPagination(PageNumberPagination):
+    page_size = 3
+
+
+class PostListAPIView(ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostListSerializer
+    pagination_class = PostPageNumberPagination
 
 
 class PostLikeAPIView(GenericAPIView):
