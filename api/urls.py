@@ -4,5 +4,6 @@ from api import views
 
 
 urlpatterns = [
-    path('posts/', views.PostListAPIView.as_view(), name='post-list'),
+    path('posts-page/', views.PostPageNumberListAPIView.as_view(), name='post-list'),
+    path('posts-limit/', views.PostLimitOffsetListAPIView.as_view(), name='post-list'),
 ]
