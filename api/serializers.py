@@ -17,7 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class PostListSerializer(serializers.ModelSerializer):
-    category = serializers.CharField(source='category.name')
+    category = serializers.CharField(source='category.name', default='')
 
     class Meta:
         model = Post
