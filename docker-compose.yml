@@ -16,7 +16,7 @@ services:
     volumes:
       - ./:/var/www/html
     working_dir: /var/www/html/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn drf_exercise.wsgi:application --bind 0.0.0.0:8000
     environment:
       POSTGRES_NAME: postgres
       POSTGRES_USER: postgres
